@@ -1,0 +1,34 @@
+/* Custom styles for Stock Tracker */
+
+/* Header style */
+h1 {
+    color: #333;
+}
+
+/* Table style */
+.table {
+    width: 100%;
+}
+
+/* Table header style */
+.table th {
+    background-color: #f8f9fa; /* Bootstrap default table header background color */
+}
+
+/* Table row hover effect */
+.table tbody tr:hover {
+    background-color: #f8f9fa; /* Bootstrap default table row hover background color */
+}
+
+/* Table cell padding */
+.table th, .table td {
+    padding: 12px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    /* Reduce font size for smaller screens */
+    h1 {
+        font-size: 24px;
+    }
+}
