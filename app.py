@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from stock_trackers import StockTracker2
 from stock_trackers2 import StockTracker
+from weather_tracker import WeatherTracker
 from Stock import Stock
 
 app = Flask(__name__)
@@ -17,7 +18,7 @@ def hello_world():  # put application's code here
 def stock_tracker():
     global selected_tickers
     if request.method == 'POST':
-        selected_tickers = request.form.getlist('selected_stocks')  # Get selected tickers
+        selected_tickers = request.form.getlist('selected_stocks')  # Get selected tickers from HTML called "selected_stocks"
         search_query = request.form.get('search')  # Get the search query
 
     # Filter stocks based on search query (if provided)
@@ -75,6 +76,37 @@ def stock_selector():
     Stock('Salesforce', 'CRM',0),
     Stock('Walmart', 'WMT',0)]
     return render_template('selectstocks.html',stocks_List=stocks_List)
+
+
+@app.route('/selectregions')
+def regionsselector():
+    regions_list = [
+        'Bydgoszcz',
+        'Warszawa',
+        'Kigali']
+    return render_template('selectregions.html',regions_list=regions_list)
+
+@app.route('/weathertracker', methods=['GET', 'POST'])
+def weather_tracker():
+    global selected_regions
+    if request.method == 'POST':
+        selected_regions = request.form.getlist('selected_regions')  # Get selected regions from HTML called "selected_regions"
+    
+    weather_data = []
+    
+    for region in selected_regions:
+        tracker = WeatherTracker(region)
+        humidity, pressure, wind, description, temp = tracker.get_current_weather_data()
+        weather_data.append({
+            'region':  region,
+            'humidity': humidity,
+            'pressure': pressure,
+            'wind': wind,
+            'description': description,
+            'temp': temp 
+        })
+        
+    return render_template('weathertracker.html', weather_data=weather_data)
 
 
 if __name__ == '__main__':

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Tracker</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h2>Weather Tracker</h2>
+    <div class="weather-data">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Region</th>
+                <th>Humidity (%)</th>
+                <th>Pressure (hPa)</th>
+                <th>Wind Speed (m/s)</th>
+                <th>Description</th>
+                <th>Temperature (&#8451;)</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for data in weather_data %}
+            <tr>
+                <td>{{ data.region }}</td>
+                <td>{{ data.humidity }}</td>
+                <td>{{ data.pressure }}</td>
+                <td>{{ data.wind }}</td>
+                <td>{{ data.description }}</td>
+                <td>{{ data.temp }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

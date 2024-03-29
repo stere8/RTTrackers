@@ -2,10 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Select Tracker</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-MKiLiXG7K5h0STygGBQ9QOXL82GpIsI8v2jHxFysCU+/C2Q+HNzCDu6IGzNRcE7XvAYoISIt8LgK/1R/DeVVGg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <a href="/selectstocks">Choose Stocks to Track</a>
-
+<div class="container">
+    <h2>Select Tracker</h2>
+    <div class="btn-group">
+        <form action="/selectstocks" method="get">
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-chart-line"></i> Track Stocks
+            </button>
+        </form>
+        <div style="width: 10px;"></div> <!-- Spacer -->
+        <form action="/selectregions" method="get">
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-cloud-sun"></i> Track Weather
+            </button>
+        </form>
+    </div>
+</div>
 </body>
 </html>
